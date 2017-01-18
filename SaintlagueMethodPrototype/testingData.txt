@@ -1,0 +1,6 @@
+Yellow 47000 
+White 16000 
+Red 15900
+Green 12000
+Blue 6000
+Pink 3100
