@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Saintlagueimplementation {
 	
 private ArrayList<Party> partyList = new ArrayList<Party>();
-private int seats = 100;
+private int seats = 63;
 
 public void addParty(Party party) {
 	partyList.add(party);
@@ -21,7 +21,6 @@ public static void main(String[] args) throws IOException{
 	BufferedReader breader = new BufferedReader(new InputStreamReader(System.in));
 	
 	while(true) {
-		System.out.println("Party Name  ");
 		String command = "";
 		
 		command = breader.readLine();
@@ -35,22 +34,53 @@ public static void main(String[] args) throws IOException{
 		}
 		if(command.equals("Print")) {
 			saint.printAllParties();
+			break;
 		}
+		System.out.print("Total votes: ");
+		String votes = "";
+		int vs = 0;
+		try {
+		votes = breader.readLine();
+		vs = Integer.parseInt(votes);
+		} catch (IOException ex) {
+		System.out.println(ex);
+		break;
+		}
+		Party p = new Party(command,vs);
+		saint.addParty(p);
 	}
-}
+	saint.delegateSeats();
+	saint.printAllParties();
+	}
+
 
 public void delegateSeats() {
+	
 	while(seats > 0) {
 		Party party = partyList.get(0);
+		
 		for(Party nextParty: partyList) {
+			if(party.partyName().equals(nextParty.partyName()));
+			System.out.println(nextParty.Quotient());
+			System.out.println(party.Quotient());
+			System.out.println("");
 			if(nextParty.Quotient() > party.Quotient()) {
+				//System.out.println("Next party in the list " + nextParty.Quotient());
+				//System.out.println("The next party in the lists votes " + nextParty.totalVotes());
+				//System.out.println("Current party: " + party.Quotient());
+				//System.out.println("Current parties votes: " + party.totalVotes());
+				//System.out.println("");
 				party = nextParty;
 			}
+			if(seats > 0) {
 			party.addSeat();
-			seats =- 1;
+			seats--;	
+			
+			}
+		}
 		}
 	}
-}
+
 
 
 // load in data and create party data to be then used for calculating seats

@@ -12,12 +12,12 @@ public Party(String name, int votes) {
 }
 
 public void addSeat() {
-	totalSeats += 1;
+	totalSeats++;
 }
 
 // formula for calculating the quotients
 public Double Quotient() {
-	return (double) totalVotes / (2 * totalSeats + 1); 
+	return (double) totalVotes / (totalSeats + 1); 
 }
 
 public String partyName() {
@@ -33,7 +33,7 @@ public int totalSeats() {
 	
 }
 public String printPartyData() {
-	return partyName + "Votes " + Integer.toString(totalVotes) + "Seats " + Integer.toString(totalSeats);
+	return partyName + " Votes " + Integer.toString(totalVotes) + " Seats " + Integer.toString(totalSeats);
 }
 
 }
