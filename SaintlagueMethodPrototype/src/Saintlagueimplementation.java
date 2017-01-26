@@ -10,14 +10,14 @@ import java.util.Scanner;
 public class Saintlagueimplementation {
 	
 private ArrayList<Party> partyList = new ArrayList<Party>();
-private int seats = 63;
+private int seats = 5;
 
 public void addParty(Party party) {
 	partyList.add(party);
 }
 
 public static void main(String[] args) throws IOException{
-	Saintlagueimplementation saint = new Saintlagueimplementation();
+	Saintlagueimplementation dhon = new Saintlagueimplementation();
 	BufferedReader breader = new BufferedReader(new InputStreamReader(System.in));
 	
 	while(true) {
@@ -29,57 +29,40 @@ public static void main(String[] args) throws IOException{
 			break;
 		}
 		if(command.equals("Load")){
-			saint.LoadVotingData("testingData.txt");
+			dhon.LoadVotingData("testingData.txt");
 			break;
 		}
 		if(command.equals("Print")) {
-			saint.printAllParties();
+			dhon.printAllParties();
 			break;
 		}
-		System.out.print("Total votes: ");
-		String votes = "";
-		int vs = 0;
-		try {
-		votes = breader.readLine();
-		vs = Integer.parseInt(votes);
-		} catch (IOException ex) {
-		System.out.println(ex);
-		break;
-		}
-		Party p = new Party(command,vs);
-		saint.addParty(p);
 	}
-	saint.delegateSeats();
-	saint.printAllParties();
+	dhon.delegateSeats();
+	dhon.printAllParties();
 	}
 
 
-public void delegateSeats() {
-	
+
+
+
+private void delegateSeats() {
+	int seats = 63;
 	while(seats > 0) {
 		Party party = partyList.get(0);
 		
 		for(Party nextParty: partyList) {
-			if(party.partyName().equals(nextParty.partyName()));
-			System.out.println(nextParty.Quotient());
-			System.out.println(party.Quotient());
-			System.out.println("");
 			if(nextParty.Quotient() > party.Quotient()) {
-				//System.out.println("Next party in the list " + nextParty.Quotient());
-				//System.out.println("The next party in the lists votes " + nextParty.totalVotes());
-				//System.out.println("Current party: " + party.Quotient());
-				//System.out.println("Current parties votes: " + party.totalVotes());
-				//System.out.println("");
-				party = nextParty;
+				party = nextParty; 
 			}
 			if(seats > 0) {
+			System.out.println(party.partyName());
 			party.addSeat();
 			seats--;	
-			
 			}
 		}
 		}
-	}
+		}
+	
 
 
 
@@ -109,5 +92,3 @@ public void printAllParties() {
 
  
 }
-
-

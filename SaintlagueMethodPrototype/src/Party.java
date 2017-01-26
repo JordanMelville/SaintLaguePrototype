@@ -17,7 +17,7 @@ public void addSeat() {
 
 // formula for calculating the quotients
 public Double Quotient() {
-	return (double) totalVotes / (totalSeats + 1); 
+	return (double) (totalVotes /(2 * totalSeats + 1));
 }
 
 public String partyName() {
